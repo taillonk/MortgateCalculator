@@ -2,14 +2,17 @@ package io.github.taillonk;
 
 public class CalculatePayment {
     private int principal;
-    private double interestRate;
+    private double interest;
     private int term;
     private double mortgage;
 
-    public void calculatePayment(int principal,double interestRate, int term) {
+    public CalculatePayment(int principal, double interest, int term) {
         this.setTerm(term);
-        this.setInterestRate(interestRate);
+        this.setInterestRate(interest);
         this.setPrincipal(principal);
+    }
+    public double calculateMortgage(){
+        return mortgage;
     }
 
     public int getPrincipal() {
@@ -21,11 +24,11 @@ public class CalculatePayment {
     }
 
     public double getInterestRate() {
-        return interestRate;
+        return interest;
     }
 
-    public void setInterestRate(double interestRate) {
-        this.interestRate = interestRate;
+    public void setInterestRate(double interest) {
+        this.interest = interest;
     }
 
     public int getTerm() {
