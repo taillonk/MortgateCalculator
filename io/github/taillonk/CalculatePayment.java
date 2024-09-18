@@ -5,6 +5,8 @@ public class CalculatePayment {
     private double annualInterest;
     private int term;
     private double mortgage;
+    final byte MONTHS_IN_YEAR = 12;
+    final byte PERCENT = 100;
 
     public CalculatePayment(int principal, double annualInterest, int term) {
         this.setTerm(term);
@@ -12,10 +14,10 @@ public class CalculatePayment {
         this.setPrincipal(principal);
     }
     public double calculateMortgage(){
-        double monthlyRate = ((getAnnualInterest()/100) / 12);
-        int months = getTerm() * 12;
+        double monthlyRate = ((getAnnualInterest()/PERCENT) / MONTHS_IN_YEAR);
+        int months = getTerm() * MONTHS_IN_YEAR;
         mortgage = getPrincipal() * ((monthlyRate * Math.pow((1+monthlyRate), months))/ (Math.pow((1+monthlyRate), months) - 1));
-        mortgage = (double) Math.round(mortgage * 100) / 100;
+        mortgage = (double) Math.round(mortgage * PERCENT) / PERCENT;
         return mortgage;
     }
 
