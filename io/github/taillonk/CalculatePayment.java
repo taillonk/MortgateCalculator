@@ -1,7 +1,5 @@
 package io.github.taillonk;
 
-import java.text.NumberFormat;
-
 public class CalculatePayment {
     private int principal;
     private double annualInterest;
