@@ -1,17 +1,23 @@
 package io.github.taillonk;
 
+import java.text.NumberFormat;
+
 public class CalculatePayment {
     private int principal;
-    private double interest;
+    private double annualInterest;
     private int term;
     private double mortgage;
 
-    public CalculatePayment(int principal, double interest, int term) {
+    public CalculatePayment(int principal, double annualInterest, int term) {
         this.setTerm(term);
-        this.setInterestRate(interest);
+        this.setAnnualInterest(annualInterest);
         this.setPrincipal(principal);
     }
     public double calculateMortgage(){
+        double monthlyRate = ((getAnnualInterest()/100) / 12);
+        int months = getTerm() * 12;
+        mortgage = getPrincipal() * ((monthlyRate * Math.pow((1+monthlyRate), months))/ (Math.pow((1+monthlyRate), months) - 1));
+        mortgage = (double) Math.round(mortgage * 100) / 100;
         return mortgage;
     }
 
@@ -23,12 +29,12 @@ public class CalculatePayment {
         this.principal = principal;
     }
 
-    public double getInterestRate() {
-        return interest;
+    public double getAnnualInterest() {
+        return annualInterest;
     }
 
-    public void setInterestRate(double interest) {
-        this.interest = interest;
+    public void setAnnualInterest(double interest) {
+        this.annualInterest = interest;
     }
 
     public int getTerm() {
