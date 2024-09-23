@@ -2,7 +2,7 @@ package io.github.taillonk;
 import java.util.Scanner;
 
 public class Prompts {
-    public static double getDouble(String input) {
+    public static double getDouble(String input, double min, double max) {
         Scanner scanner = new Scanner(System.in); // setup scanner
         double num = 0; // will hold the returned number.
         String str = "";
@@ -12,7 +12,11 @@ public class Prompts {
             str = scanner.nextLine();
             try {
                 num = Double.parseDouble(str);
-                gotDouble = true;
+                if (num >= min && num <= max){
+                    gotDouble = true;
+                } else {
+                    System.out.println("Enter a value between: " + min + " and " + max);
+                }
             } catch (Exception e) {
                 System.out.println(str + " is not a number.");
             } // end try/catch
@@ -22,7 +26,7 @@ public class Prompts {
         return num;
     }// end getDouble()
 
-    public static int getInt(String input) {
+    public static int getInt(String input, int min, int max) {
         Scanner scanner = new Scanner(System.in); // setup scanner
         int num = 0; // will hold the returned number.
         String str = "";
@@ -32,7 +36,11 @@ public class Prompts {
             str = scanner.nextLine();
             try {
                 num = Integer.parseInt(str);
-                gotInt = true;
+                if (num >= min && num <= max) {
+                    gotInt = true;
+                } else {
+                    System.out.println("Enter a value between: " + min + " and " + max);
+                }
             } catch (Exception e) {
                 System.out.println(str + " is not an integer.");
             } // end try/catch
