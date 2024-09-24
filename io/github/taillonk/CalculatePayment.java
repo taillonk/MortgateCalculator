@@ -21,6 +21,18 @@ public class CalculatePayment {
         return mortgage;
     }
 
+    public void calculateBalance(){
+        double monthlyRate = ((getAnnualInterest()/PERCENT) / MONTHS_IN_YEAR);
+        int months = getTerm() * MONTHS_IN_YEAR;
+        for(int i = 0; i <= months; i++) {
+            double balance = getPrincipal()
+                    * (((Math.pow((1 + monthlyRate), months))) - (Math.pow((1 + monthlyRate), i)))
+                    / ((Math.pow((1 + monthlyRate), months)) - 1);
+            balance = (double) Math.round(balance * PERCENT) / PERCENT;
+            System.out.println("$" + balance);
+        }
+    }
+
     public int getPrincipal() {
         return principal;
     }
