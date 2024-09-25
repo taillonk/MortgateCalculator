@@ -33,6 +33,20 @@ public class CalculatePayment {
         }
     }
 
+    public void printPaymentSchedule(){
+        System.out.println();
+        System.out.println("PAYMENT SCHEDULE");
+        System.out.println("----------------");
+        this.calculateBalance();
+    }
+
+    public void printMortgage(){
+        System.out.println();
+        System.out.println("MORTGAGE");
+        System.out.println("--------");
+        System.out.println("Monthly Payments: $" + this.calculateMortgage());
+    }
+
     public int getPrincipal() {
         return principal;
     }

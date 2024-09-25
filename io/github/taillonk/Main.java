@@ -7,11 +7,7 @@ public class Main {
         int term = Prompts.getInt("Enter the term of the loan in years (1 to 30): ", 1, 30);
 
         CalculatePayment calculator = new CalculatePayment(principal, annualInterest,term);
-        System.out.println("MORTGAGE");
-        System.out.println("--------");
-        System.out.println("Montly Payments: $" + calculator.calculateMortgage());
-        System.out.println("PAYMENT SCHEDULE");
-        System.out.println("----------------");
-        calculator.calculateBalance();
+        calculator.printMortgage();
+        calculator.printPaymentSchedule();
     }
 }
